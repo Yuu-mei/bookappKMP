@@ -9,14 +9,15 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -39,6 +40,7 @@ import com.plcoding.bookpedia.book.presentation.book_detail.components.BlurredIm
 import com.plcoding.bookpedia.book.presentation.book_detail.components.BookChip
 import com.plcoding.bookpedia.book.presentation.book_detail.components.ChipSize
 import com.plcoding.bookpedia.book.presentation.book_detail.components.TitledContent
+import com.plcoding.bookpedia.core.presentation.PulseAnimation
 import com.plcoding.bookpedia.core.presentation.SandYellow
 import org.jetbrains.compose.resources.stringResource
 import java.util.Locale.getDefault
@@ -84,6 +86,7 @@ private fun BookDetailScreen(
                 modifier = Modifier
                     .widthIn(max = 700.dp)
                     .fillMaxWidth()
+                    .navigationBarsPadding()
                     .padding(vertical = 16.dp, horizontal = 24.dp)
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -168,13 +171,12 @@ private fun BookDetailScreen(
                 )
 
                 if (state.isLoading) {
-                    CircularProgressIndicator()
+                    PulseAnimation(modifier = Modifier.size(60.dp))
                 } else {
                     Text(
                         modifier = Modifier
                             .padding(vertical = 8.dp),
-                        text = state.book.description
-                            ?: stringResource(Res.string.synopsis_unavailable),
+                        text = if (state.book.description.isNullOrBlank()) stringResource(Res.string.synopsis_unavailable) else state.book.description,
                         style = MaterialTheme.typography.bodyMedium,
                         textAlign = TextAlign.Justify,
                         color = if (state.book.description.isNullOrBlank()) Color.Black.copy(alpha = 0.4f) else Color.Black
