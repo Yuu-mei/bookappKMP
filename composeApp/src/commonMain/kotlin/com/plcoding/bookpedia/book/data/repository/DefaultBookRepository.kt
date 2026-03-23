@@ -7,6 +7,7 @@ import com.plcoding.bookpedia.book.data.mappers.toBookEntity
 import com.plcoding.bookpedia.book.data.network.RemoteBookDataSource
 import com.plcoding.bookpedia.book.domain.Book
 import com.plcoding.bookpedia.book.domain.BookRepository
+import com.plcoding.bookpedia.book.domain.SearchFilters
 import com.plcoding.bookpedia.core.domain.DataError
 import com.plcoding.bookpedia.core.domain.EmptyResult
 import com.plcoding.bookpedia.core.domain.Result
@@ -23,6 +24,14 @@ class DefaultBookRepository(
             .searchBooks(query)
             .map { dto ->
                 dto.results.map{ it.toBook() }
+            }
+    }
+
+    override suspend fun searchBooksWithFilters(searchFilters: SearchFilters): Result<List<Book>, DataError.Remote> {
+        return remoteBookDataSource
+            .searchBooksWithFilters(searchFilters)
+            .map { dto ->
+                dto.results.map { it.toBook() }
             }
     }
 

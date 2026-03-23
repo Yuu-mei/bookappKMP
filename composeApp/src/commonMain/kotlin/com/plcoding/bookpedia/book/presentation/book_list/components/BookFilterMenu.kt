@@ -220,7 +220,7 @@ fun BookFilterMenu(
                                 confirmButton = {
                                     TextButton(onClick = {
                                         val selectedYear =
-                                            fromDatePickerState.selectedDateMillis!!.let {
+                                            fromDatePickerState.selectedDateMillis?.let {
                                                 calendar.timeInMillis = it
                                                 calendar.get(Calendar.YEAR)
                                             }.toString()
@@ -268,7 +268,7 @@ fun BookFilterMenu(
                                 confirmButton = {
                                     TextButton(onClick = {
                                         val selectedYear =
-                                            toDatePickerState.selectedDateMillis!!.let {
+                                            toDatePickerState.selectedDateMillis?.let {
                                                 calendar.timeInMillis = it
                                                 calendar.get(Calendar.YEAR)
                                             }.toString()

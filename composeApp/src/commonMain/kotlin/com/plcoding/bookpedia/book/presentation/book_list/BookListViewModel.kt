@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.plcoding.bookpedia.book.domain.Book
 import com.plcoding.bookpedia.book.domain.BookRepository
+import com.plcoding.bookpedia.book.domain.SearchFilters
 import com.plcoding.bookpedia.core.domain.onError
 import com.plcoding.bookpedia.core.domain.onSuccess
 import com.plcoding.bookpedia.core.presentation.toUiText
@@ -41,7 +42,10 @@ class BookListViewModel(private val bookRepository: BookRepository) : ViewModel(
 
             is BookListAction.OnSearchQueryChanged -> {
                 _state.update { state ->
-                    state.copy(searchQuery = action.query)
+                    state.copy(
+                        searchQuery = action.query,
+                        filters = state.filters.copy(query = action.query)
+                    )
                 }
             }
 
@@ -76,7 +80,7 @@ class BookListViewModel(private val bookRepository: BookRepository) : ViewModel(
             }
 
             is BookListAction.OnApplyFilters -> {
-                
+                searchBooksWithFilters(_state.value.filters)
             }
         }
     }
@@ -125,6 +129,35 @@ class BookListViewModel(private val bookRepository: BookRepository) : ViewModel(
 
         bookRepository
             .searchBooks(query)
+            .onSuccess { searchResults ->
+                _state.update {
+                    it.copy(
+                        isLoading = false,
+                        errorMessage = null,
+                        searchResult = searchResults
+                    )
+                }
+            }
+            .onError { error ->
+                _state.update {
+                    it.copy(
+                        isLoading = false,
+                        searchResult = emptyList(),
+                        errorMessage = error.toUiText()
+                    )
+                }
+            }
+    }
+
+    private fun searchBooksWithFilters(searchFilters: SearchFilters) = viewModelScope.launch {
+        _state.update {
+            it.copy(
+                isLoading = true
+            )
+        }
+
+        bookRepository
+            .searchBooksWithFilters(searchFilters)
             .onSuccess { searchResults ->
                 _state.update {
                     it.copy(

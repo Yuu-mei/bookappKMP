@@ -36,6 +36,7 @@ import cmp_bookpedia.composeapp.generated.resources.rating
 import cmp_bookpedia.composeapp.generated.resources.star_icon
 import cmp_bookpedia.composeapp.generated.resources.synopsis
 import cmp_bookpedia.composeapp.generated.resources.synopsis_unavailable
+import cmp_bookpedia.composeapp.generated.resources.year
 import com.plcoding.bookpedia.book.presentation.book_detail.components.BlurredImageBackground
 import com.plcoding.bookpedia.book.presentation.book_detail.components.BookChip
 import com.plcoding.bookpedia.book.presentation.book_detail.components.ChipSize
@@ -130,6 +131,18 @@ private fun BookDetailScreen(
                             BookChip {
                                 Text(
                                     text = "$pages"
+                                )
+                            }
+                        }
+                    }
+
+                    state.book.firstPublishYear.let { year ->
+                        TitledContent(
+                            title = stringResource(Res.string.year)
+                        ) {
+                            BookChip {
+                                Text(
+                                    text = "$year"
                                 )
                             }
                         }

@@ -19,6 +19,7 @@
     <string name="rating">Rating</string>
     <string name="pages">Pages</string>
     <string name="languages">Languages</string>
+    <string name="year">Publish Date</string>
     <string name="synopsis">Synopsis</string>
     <string name="synopsis_unavailable">Synopsis not available</string>
     <string name="arrow_back">Go back</string>
