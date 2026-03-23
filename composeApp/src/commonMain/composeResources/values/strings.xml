@@ -2,7 +2,7 @@
 <resources>
     <string name="search_hint">Search...</string>
     <string name="search_button">Search button</string>
-    <string name="close_hint">Clear search</string>
+    <string name="close_hint">Clear</string>
     <string name="star_icon">Favorite</string>
     <string name="arrow_icon">Check details</string>
     <string name="search_tab">Search Results</string>
@@ -24,4 +24,37 @@
     <string name="arrow_back">Go back</string>
     <string name="mark_favorite">Mark as favorite</string>
     <string name="remove_favorite">Remove from favorites</string>
+    <string name="menu_icon">Open Filters Menu</string>
+    <string name="apply_filters">Apply Filters</string>
+    <string name="filters_title">Filters</string>
+    <string name="author_title">Author</string>
+    <string name="language_title">Language</string>
+    <string name="date_title">Date</string>
+    <string name="year_from_title">From</string>
+    <string name="year_to_title">To</string>
+    <string name="author_hint">Author...</string>
+    <string name="lang_select">Select your language...</string>
+    <string name="lang_english">English</string>
+    <string name="lang_spanish">Spanish</string>
+    <string name="lang_french">French</string>
+    <string name="lang_german">German</string>
+    <string name="lang_italian">Italian</string>
+    <string name="lang_portuguese">Portuguese</string>
+    <string name="lang_russian">Russian</string>
+    <string name="lang_chinese">Chinese</string>
+    <string name="lang_japanese">Japanese</string>
+    <string name="lang_arabic">Arabic</string>
+    <string name="lang_hindi">Hindi</string>
+    <string name="lang_dutch">Dutch</string>
+    <string name="lang_swedish">Swedish</string>
+    <string name="lang_norwegian">Norwegian</string>
+    <string name="lang_danish">Danish</string>
+    <string name="lang_finnish">Finnish</string>
+    <string name="lang_greek">Greek</string>
+    <string name="lang_turkish">Turkish</string>
+    <string name="lang_polish">Polish</string>
+    <string name="lang_czech">Czech</string>
+    <string name="lang_hungarian">Hungarian</string>
+    <string name="lang_hebrew">Hebrew</string>
+    <string name="lang_korean">Korean</string>
 </resources>

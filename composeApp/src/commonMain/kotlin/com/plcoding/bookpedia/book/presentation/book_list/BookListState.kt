@@ -1,10 +1,12 @@
 package com.plcoding.bookpedia.book.presentation.book_list
 
 import com.plcoding.bookpedia.book.domain.Book
+import com.plcoding.bookpedia.book.domain.SearchFilters
 import com.plcoding.bookpedia.core.presentation.UiText
 
 data class BookListState(
     val searchQuery: String = "Chainsaw Man",
+    val filters: SearchFilters = SearchFilters(searchQuery),
     val searchResult: List<Book> = emptyList(),
     val favoriteBooks: List<Book> = emptyList(),
     val isLoading: Boolean = false,

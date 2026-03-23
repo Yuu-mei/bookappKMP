@@ -33,10 +33,10 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun BookSearchBar(
+    modifier: Modifier = Modifier,
     searchQuery: String,
     onSearchQueryChange: (String) -> Unit,
-    onImeSearch: () -> Unit,
-    modifier: Modifier = Modifier
+    onImeSearch: () -> Unit
 ){
     CompositionLocalProvider(
         LocalTextSelectionColors provides TextSelectionColors(

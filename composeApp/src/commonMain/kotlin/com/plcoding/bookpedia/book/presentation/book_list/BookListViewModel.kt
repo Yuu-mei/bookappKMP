@@ -50,6 +50,34 @@ class BookListViewModel(private val bookRepository: BookRepository) : ViewModel(
                     state.copy(selectedTabIndex = action.selectedIndex)
                 }
             }
+
+            is BookListAction.OnAuthorFilterChanged -> {
+                _state.update { state ->
+                    state.copy(filters = state.filters.copy(author = action.author))
+                }
+            }
+
+            is BookListAction.OnLanguageFilterChanged -> {
+                _state.update { state ->
+                    state.copy(filters = state.filters.copy(language = action.lang))
+                }
+            }
+
+            is BookListAction.OnFromDateFilterChanged -> {
+                _state.update { state ->
+                    state.copy(filters = state.filters.copy(yearFrom = action.year))
+                }
+            }
+
+            is BookListAction.OnToDateFilterChanged -> {
+                _state.update { state ->
+                    state.copy(filters = state.filters.copy(yearTo = action.year))
+                }
+            }
+
+            is BookListAction.OnApplyFilters -> {
+                
+            }
         }
     }
 
